@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monserrat Alvarez | Data, Growth & CX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="I connect data, growth and customer experience so teams can make clearer decisions."
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 0% 0%, #dbeafe 0, transparent 45%),
+        radial-gradient(circle at 100% 0%, #e0f2fe 0, transparent 45%),
+        radial-gradient(circle at 50% 100%, #e0f2fe 0, #f9fafb 50%);
+      background-attachment: fixed;
+      background-size: 140% 140%;
+      animation: bg-pan 26s ease-in-out infinite;
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 28px 20px 40px;
+    }
+
+    section {
+      margin-bottom: 40px;
+      scroll-margin-top: 90px;
+    }
+
+    .section-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    /* BLOQUES DE SECCIÓN PARA EFECTO DINÁMICO */
+    .section-block {
+      position: relative;
+      opacity: 0.98;
+    }
+    .section-block::before {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 18px;
+      width: 3px;
+      height: 0;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #4f46e5, #0ea5e9);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+    }
+    .section-block .section-inner {
+      transform: translateY(10px);
+    }
+    .section-block.section-active::before {
+      height: 60%;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section-block.section-active .section-inner {
+      transform: translateY(0);
+    }
+
+    /* CARDS ENTRE SECCIONES (excepto HERO) */
+    section.section-block:not(#hero) .section-inner {
+      background: rgba(255,255,255,0.94);
+      border-radius: 20px;
+      padding: 18px 18px 20px;
+      box-shadow: 0 18px 40px rgba(148,163,184,0.18);
+    }
+
+    /* SCROLL PROGRESS BAR */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(90deg, #4f46e5, #0ea5e9);
+      z-index: 30;
+      transform-origin: left center;
+      transition: width 0.08s linear;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 4px;
+      z-index: 10;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(14px);
+      background: rgba(248,250,252,0.94);
+      border-bottom: 1px solid rgba(209,213,219,0.9);
+      transition: padding 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.35s ease, opacity 0.35s ease;
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    body.page-ready header {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    header.header--scrolled {
+      padding-block: 6px;
+      background: rgba(15,23,42,0.96);
+      border-color: transparent;
+      box-shadow: 0 10px 32px rgba(15,23,42,0.55);
+      color: #e5e7eb;
+    }
+    header.header--scrolled .logo-sub {
+      color: #9ca3af;
+    }
+    header.header--scrolled .nav {
+      background: rgba(15,23,42,0.7);
+      border-color: rgba(55,65,81,0.8);
+    }
+    header.header--scrolled .nav a {
+      color: #e5e7eb;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #ffffff, #e5e7eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #111827;
+      border: 1px solid #d1d5db;
+      animation: pulse-ring 2.8s ease-out infinite;
+    }
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .logo-sub {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: #6b7280;
+      align-items: center;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(209,213,219,0.8);
+    }
+    .nav a {
+      position: relative;
+      padding: 4px 10px;
+      border-radius: 999px;
+      transition: color 0.15s ease-out, transform 0.15s ease-out, background 0.15s ease-out;
+    }
+    .nav a::after { display: none; }
+    .nav a:hover {
+      color: #111827;
+      transform: translateY(-1px);
+      background: rgba(226,232,240,0.7);
+    }
+    .nav a.active {
+      color: #020617;
+      font-weight: 600;
+      background: radial-gradient(circle at 0 0, #eef2ff 0, #e0f2fe 40%, #f9fafb 100%);
+      box-shadow: 0 6px 14px rgba(148,163,184,0.4);
+      border-radius: 999px;
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 20px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0 0, #4f46e5, #0ea5e9);
+      color: #f9fafb;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 16px 40px rgba(129,140,248,0.5);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease, filter 0.12s ease;
+    }
+    .btn-primary span {
+      margin-left: 6px;
+      font-size: 1rem;
+      transition: transform 0.12s ease;
+    }
+    .btn-primary:hover {
+      opacity: 0.98;
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 20px 60px rgba(79,70,229,0.7);
+      filter: brightness(1.05);
+    }
+    .btn-primary:hover span {
+      transform: translateX(2px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.8);
+      background: rgba(255,255,255,0.9);
+      font-size: 0.9rem;
+      color: #374151;
+      cursor: pointer;
+      transition: border-color 0.12s ease, background 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .btn-ghost:hover {
+      border-color: #4f46e5;
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(148,163,184,0.35);
+    }
+
+    /* REVEAL BASE */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px) scale(0.99);
+      transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* STAGGERED ELEMENTS */
+    [data-stagger] {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    .visible-stagger {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 68vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .hero-content {
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 8px;
+    }
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 3.4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 10px;
+      color: #020617;
+    }
+    .hero-title span {
+      display: inline;
+      background-image: linear-gradient(90deg, #0f172a, #4f46e5, #0ea5e9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 200% 100%;
+      animation: shimmer 8s ease-in-out infinite;
+    }
+    .hero-body {
+      font-size: 1rem;
+      color: #4b5563;
+      max-width: 440px;
+      margin-bottom: 14px;
+    }
+
+    /* HERO BADGES */
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .hero-badge {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: linear-gradient(#f9fafb, #f9fafb) padding-box,
+                  linear-gradient(90deg, #4f46e5, #0ea5e9, #22c55e) border-box;
+      color: #111827;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #4f46e5, #0ea5e9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .hero-note {
+      font-size: 0.9rem;
+      color: #6b7280;
+      max-width: 440px;
+    }
+
+    /* SCROLL CUE */
+    .scroll-cue {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 18px;
+      animation: scroll-bounce 2.4s ease-in-out infinite;
+      cursor: default;
+    }
+    .scroll-cue-icon {
+      font-size: 1.1rem;
+    }
+
+    /* HERO PANEL */
+    .hero-panel-wrap {
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 26px;
+      animation: float 9s ease-in-out infinite;
+      transform-origin: center;
+    }
+    .hero-panel {
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top left, #eef2ff 0, #e0f2fe 40%, #f9fafb 100%);
+      border: 1px solid #c7d2fe;
+      padding: 20px 20px 18px;
+      box-shadow:
+        0 22px 52px rgba(15,23,42,0.22),
+        0 0 0 1px rgba(255,255,255,0.9) inset;
+      font-size: 0.9rem;
+      color: #4b5563;
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+      transform-style: preserve-3d;
+    }
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background:
+        radial-gradient(circle at 10% 0, rgba(191,219,254,0.55), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(129,140,248,0.6), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+      animation: light-move 18s linear infinite;
+    }
+    .hero-panel-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      gap: 4px;
+      border-bottom: 1px solid rgba(148,163,184,0.6);
+      padding-bottom: 8px;
+    }
+    .hero-panel-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #111827;
+    }
+    .hero-panel-tag {
+      font-size: 0.8rem;
+      color: #6b7280;
+      white-space: nowrap;
+    }
+    .highlight-kpi {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      background: linear-gradient(90deg, #020617 0%, #4f46e5 40%, #0ea5e9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 8s ease-in-out infinite;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .hero-kpi {
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(249,250,251,0.94);
+      border: 1px solid #e5e7eb;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .hero-kpi::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(59,130,246,0.18), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .hero-kpi:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(148,163,184,0.32);
+      border-color: rgba(129,140,248,0.7);
+    }
+    .hero-kpi:hover::before {
+      opacity: 1;
+    }
+    .hero-kpi-label {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 3px;
+    }
+    .hero-kpi-value {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #020617;
+      min-height: 1.4em;
+    }
+    .hero-kpi-note {
+      font-size: 0.82rem;
+      color: #16a34a;
+      margin-top: 3px;
+    }
+    .hero-panel-foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-top: 1px solid rgba(148,163,184,0.6);
+      padding-top: 6px;
+      font-size: 0.82rem;
+      color: #4b5563;
+    }
+
+    /* TITLES */
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #020617;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      margin-top: 4px;
+      width: 46px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #4f46e5, #0ea5e9, #22c55e);
+    }
+
+    .section-intro {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 10px;
+      max-width: 540px;
+    }
+
+    .accent-text {
+      background: linear-gradient(90deg, #4f46e5, #0ea5e9, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* FLOW */
+    .flow-section {
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .flow-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background:
+        linear-gradient(#f9fafb, #f9fafb) padding-box,
+        linear-gradient(90deg, #4f46e5, #0ea5e9, #22c55e) border-box;
+      border: 1px solid transparent;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+    .flow-label::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #4f46e5, #0ea5e9);
+    }
+
+    .flow-steps {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.85rem;
+      padding-left: 4px;
+    }
+    .flow-steps::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(148,163,184,0.4), transparent);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .flow-step {
+      flex: 1 1 0;
+      min-width: 190px;
+      padding: 9px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+    .flow-step:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(148,163,184,0.25);
+      border-color: #c7d2fe;
+      background: #f9fafb;
+    }
+    .flow-step-index {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #f9fafb;
+      background: linear-gradient(135deg, #4f46e5, #0ea5e9, #22c55e);
+      border-radius: 999px;
+      padding: 2px 8px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.7);
+    }
+    .flow-step-text {
+      color: #111827;
+      font-weight: 500;
+    }
+
+    /* FOCUS */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 10px;
+    }
+    .focus-item {
+      padding: 11px 13px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(226,232,240,0.9);
+      font-size: 0.95rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .focus-item::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(79,70,229,0.16), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .focus-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(148,163,184,0.35);
+      border-color: rgba(129,140,248,0.9);
+      background: rgba(255,255,255,0.98);
+    }
+    .focus-item:hover::before {
+      opacity: 1;
+    }
+
+    .focus-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+    .focus-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+      margin-bottom: 2px;
+    }
+
+    .focus-title {
+      font-weight: 600;
+      margin-bottom: 0;
+      background: linear-gradient(90deg, #4f46e5, #0ea5e9, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 0.01em;
+      transition: background-position 0.5s ease;
+      background-size: 200% 100%;
+      background-position: 0% 50%;
+    }
+    .focus-item:hover .focus-title {
+      background-position: 100% 50%;
+    }
+
+    .focus-toggle {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      white-space: nowrap;
+    }
+    .focus-more {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      color: #6b7280;
+      display: none;
+    }
+    .focus-more p {
+      margin-bottom: 4px;
+    }
+    .focus-more ul {
+      padding-left: 16px;
+      margin-top: 2px;
+    }
+    .focus-more li {
+      margin-bottom: 2px;
+    }
+    .focus-item.expanded .focus-more {
+      display: block;
+    }
+    .focus-item.expanded .focus-toggle {
+      color: #4b5563;
+    }
+
+    /* MEDIA GRID */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+    }
+    .media-item {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: radial-gradient(circle at 0 0, #0b1120, #020617);
+      color: #e5e7eb;
+      border: 1px solid rgba(15,23,42,0.85);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.65);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      isolation: isolate;
+      cursor: pointer;
+      transition:
+        transform 0.22s ease-out,
+        box-shadow 0.22s ease-out,
+        border-color 0.22s ease-out,
+        background 0.22s ease-out;
+    }
+    .media-item::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(56,189,248,0.35), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(129,140,248,0.4), transparent 55%);
+      opacity: 0;
+      mix-blend-mode: screen;
+      transition: opacity 0.35s ease-out;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .media-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(15,23,42,0.85) 100%);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+    .media-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transform-origin: center;
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+    .media-body {
+      padding: 10px 12px 12px;
+      font-size: 0.86rem;
+      position: relative;
+      z-index: 1;
+    }
+    .media-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #a5b4fc;
+      margin-bottom: 4px;
+    }
+    .media-title {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .media-meta {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    .media-item:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 26px 70px rgba(15,23,42,0.9);
+      border-color: rgba(129,140,248,0.9);
+      background: radial-gradient(circle at 0 0, #020617, #020617);
+    }
+    .media-item:hover::before {
+      opacity: 1;
+    }
+    .media-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.08);
+    }
+
+    /* EXPERIENCE */
+    .exp-list {
+      display: grid;
+      grid-template-columns: minmax(0,1fr);
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+    .exp-item {
+      padding: 11px 13px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(226,232,240,0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, #4f46e5, #0ea5e9, #22c55e);
+      opacity: 0.3;
+      transition: opacity 0.2s ease, width 0.2s ease;
+    }
+    .exp-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(148,163,184,0.4);
+      border-color: rgba(148,163,184,0.9);
+      background: rgba(255,255,255,0.98);
+    }
+    .exp-item:hover::before {
+      opacity: 1;
+      width: 4px;
+    }
+    .exp-main {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+    }
+    .exp-role {
+      font-weight: 600;
+      color: #111827;
+    }
+    .exp-org {
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+    .exp-meta-hint {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      white-space: nowrap;
+    }
+
+    /* MODAL EXPERIENCE */
+    .exp-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 40;
+    }
+    .exp-modal.open {
+      display: flex;
+    }
+    .exp-modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,23,42,0.55);
+      backdrop-filter: blur(6px);
+    }
+    .exp-modal-dialog {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      width: calc(100% - 32px);
+      background: radial-gradient(circle at 0 0, #eef2ff, #f9fafb);
+      border-radius: 20px;
+      box-shadow: 0 24px 70px rgba(15,23,42,0.7);
+      border: 1px solid rgba(129,140,248,0.6);
+      padding: 18px 18px 16px;
+      animation: modal-in 0.2s ease-out;
+      color: #111827;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .exp-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      background: rgba(15,23,42,0.05);
+      border-radius: 999px;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #6b7280;
+      transition: background 0.12s ease, transform 0.12s ease;
+    }
+    .exp-modal-close:hover {
+      background: rgba(15,23,42,0.12);
+      transform: translateY(-1px);
+    }
+    .exp-modal-header {
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .exp-modal-role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .exp-modal-org {
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+    .exp-modal-body {
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin-top: 8px;
+    }
+    .exp-modal-body p {
+      margin-bottom: 6px;
+    }
+    .exp-modal-body ul {
+      padding-left: 18px;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+    .exp-modal-body li {
+      margin-bottom: 3px;
+    }
+
+    @keyframes modal-in {
+      from {
+        opacity: 0;
+        transform: translateY(6px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* TOBIPETS / ALISTO CAROUSEL / IMAGES INSIDE MODAL */
+    .exp-carousel {
+      margin: 4px 0 10px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 14px;
+      border: 1px solid rgba(209,213,219,0.9);
+      padding: 10px;
+    }
+    .exp-carousel-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .exp-carousel-header img {
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid rgba(209,213,219,0.9);
+    }
+    .exp-carousel-header-text {
+      font-size: 0.82rem;
+      color: #6b7280;
+    }
+
+    /* HEADER GRANDE PARA ALISTO */
+    .exp-carousel-header--large {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      width: 100%;
+    }
+    .exp-carousel-header--large img.exp-header-screenshot {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(209,213,219,0.9);
+    }
+
+    .exp-carousel-track-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .exp-carousel-track {
+      display: flex;
+      transition: transform 0.25s ease-out;
+    }
+    .exp-slide {
+      min-width: 100%;
+      padding: 6px 2px 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    /* IMÁGENES DEL CARRUSEL / MODAL CUADRADAS Y RESPONSIVE */
+    .exp-slide img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid rgba(209,213,219,0.9);
+    }
+    .exp-slide-caption {
+      font-size: 0.8rem;
+      color: #4b5563;
+      margin-top: 4px;
+    }
+    .exp-carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      gap: 8px;
+    }
+    .exp-carousel-arrows {
+      display: flex;
+      gap: 4px;
+    }
+    .exp-carousel-btn {
+      border: none;
+      background: rgba(15,23,42,0.04);
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 0.8rem;
+      color: #4b5563;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.12s ease, transform 0.12s ease;
+    }
+    .exp-carousel-btn:hover {
+      background: rgba(15,23,42,0.1);
+      transform: translateY(-1px);
+    }
+    .exp-carousel-dots {
+      display: flex;
+      gap: 4px;
+      justify-content: flex-end;
+    }
+    .exp-carousel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(148,163,184,0.5);
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .exp-carousel-dot.active {
+      background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+      transform: scale(1.2);
+    }
+
+    /* CONTACT */
+    #contact { text-align: center; }
+    .contact-actions {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align:center;
+      font-size:0.8rem;
+      color:#9ca3af;
+      padding:10px 20px 16px;
+      border-top:1px solid #e5e7eb;
+    }
+
+    /* ANIMATIONS */
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes light-move {
+      0% { transform: translate3d(0,0,0); }
+      100% { transform: translate3d(-10%, 8%, 0); }
+    }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(148,163,184,0.6); }
+      70% { box-shadow: 0 0 0 8px rgba(148,163,184,0); }
+      100% { box-shadow: 0 0 0 0 rgba(148,163,184,0); }
+    }
+    @keyframes bg-pan {
+      0% { background-position: 0% 20%; }
+      50% { background-position: 100% 80%; }
+      100% { background-position: 0% 20%; }
+    }
+    @keyframes scroll-bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(3px); }
+      60% { transform: translateY(1px); }
+    }
+
+    /* REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 880px) {
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 24px;
+        padding-top: 4px;
+      }
+      .hero-content, .hero-panel-wrap {
+        max-width: 100%;
+      }
+      .flow-steps {
+        flex-direction: column;
+      }
+      .flow-steps::before {
+        display: none;
+      }
+      header {
+        padding-inline: 14px;
+      }
+      main {
+        padding-inline: 16px;
+      }
+      .section-block::before {
+        left: -4px;
+      }
+      .media-item img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<header id="site-header">
+  <div class="logo-wrap">
+    <div class="logo-mark">M</div>
+    <div>
+      <div class="logo-text">MONSERRAT ALVAREZ</div>
+      <div class="logo-sub">Data · Growth · Customer Experience</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#focus" data-section="focus">Focus</a>
+    <a href="#media" data-section="media">Media</a>
+    <a href="#experience" data-section="experience">Experience</a>
+    <a href="#contact" data-section="contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="hero" class="section-block">
+    <div class="hero-content reveal reveal-stagger section-inner">
+      <div class="hero-eyebrow" data-stagger>Data · Growth · CX</div>
+      <h1 class="hero-title" data-stagger>
+        One partner for<br>
+        <span>data, growth and customer experience.</span>
+      </h1>
+      <p class="hero-body" data-stagger>
+        I help teams turn data into clear decisions and better customer journeys.
+      </p>
+
+      <div class="hero-badges" data-stagger>
+        <span class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Business intelligence
+        </span>
+        <span class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Marketing & revenue
+        </span>
+        <span class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Customer experience
+        </span>
+      </div>
+
+      <div class="hero-actions" data-stagger>
+        <a
+          class="btn-primary"
+          href="mailto:monsealva31221@gmail.com?subject=Role%20opportunity%20-%20Data%2C%20Growth%20or%20CX&body=Hi%20Monserrat%2C%0D%0A%0D%0AI'm%20reaching%20out%20about%20a%20role%20related%20to%20data%2C%20growth%20or%20customer%20experience.%0D%0A%0D%0ACompany%3A%0D%0ARole%3A%0D%0AWhat%20we%20need%20help%20with%3A%0D%0A%0D%0AThanks!">
+          Talk about a role<span>↗</span>
+        </a>
+      </div>
+      <div class="hero-note" data-stagger>
+        Open to remote roles and projects where data, growth and CX need to work together.
+      </div>
+      <div class="scroll-cue" data-stagger>
+        <span>Scroll</span>
+        <span class="scroll-cue-icon">⌄</span>
+      </div>
+    </div>
+
+    <aside class="hero-panel-wrap reveal section-inner">
+      <div class="hero-panel" id="kpi-panel">
+        <div class="hero-panel-inner">
+          <div class="hero-panel-header">
+            <div class="hero-panel-title highlight-kpi">What I tend to look at</div>
+            <div class="hero-panel-tag">Example snapshot</div>
+          </div>
+          <div class="hero-grid">
+            <div class="hero-kpi">
+              <div class="hero-kpi-label">Revenue</div>
+              <div
+                class="hero-kpi-value js-counter"
+                data-from="0"
+                data-to="14"
+                data-decimals="0"
+                data-prefix="+"
+                data-suffix="% MoM"
+              >+0% MoM</div>
+              <div class="hero-kpi-note">Returning clients</div>
+            </div>
+            <div class="hero-kpi">
+              <div class="hero-kpi-label">Retention</div>
+              <div
+                class="hero-kpi-value js-counter"
+                data-from="0"
+                data-to="74"
+                data-decimals="0"
+                data-prefix=""
+                data-suffix="%"
+              >0%</div>
+              <div class="hero-kpi-note">After CX changes</div>
+            </div>
+            <div class="hero-kpi">
+              <div class="hero-kpi-label">Conversion</div>
+              <div
+                class="hero-kpi-value js-counter"
+                data-from="0"
+                data-to="3.1"
+                data-decimals="1"
+                data-prefix=""
+                data-suffix="%"
+              >0.0%</div>
+              <div class="hero-kpi-note">Handoff to sales</div>
+            </div>
+          </div>
+          <div class="hero-panel-foot">
+            <span>Where are we losing people?</span>
+            <span>What is signal vs. noise?</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- STORY CONNECTOR -->
+  <section class="flow-section reveal section-block">
+    <div class="section-inner">
+      <div class="flow-label">
+        How I usually approach a project
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step-index">01</div>
+          <div class="flow-step-text">Clarify where you are and what the numbers really say.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-index">02</div>
+          <div class="flow-step-text">Pick a few realistic bets the team can own.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-index">03</div>
+          <div class="flow-step-text">Align the customer experience so those bets stick.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCUS -->
+  <section id="focus" class="reveal reveal-stagger section-block">
+    <div class="section-inner">
+      <h2 data-stagger>Focus</h2>
+      <p class="section-intro" data-stagger>
+        <span class="accent-text">The work usually lives in these three pillars</span> — tap to open each one.
+      </p>
+
+      <div class="focus-grid">
+        <div class="focus-item js-focus" data-stagger>
+          <div class="focus-head">
+            <div>
+              <div class="focus-label">01 · Data</div>
+              <div class="focus-title">Business intelligence</div>
+            </div>
+            <div class="focus-toggle">More ▾</div>
+          </div>
+          <div class="focus-more">
+            <p>Make data simple enough to use every week.</p>
+            <ul>
+              <li>Define a small, clear metric set.</li>
+              <li>Connect data from the tools you already have.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="focus-item js-focus" data-stagger>
+          <div class="focus-head">
+            <div>
+              <div class="focus-label">02 · Growth</div>
+              <div class="focus-title">Marketing & revenue</div>
+            </div>
+            <div class="focus-toggle">More ▾</div>
+          </div>
+          <div class="focus-more">
+            <p>Growth that matches how people actually behave.</p>
+            <ul>
+              <li>Map the journey from first touch to repeat.</li>
+              <li>Spot the biggest leaks in your funnel.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="focus-item js-focus" data-stagger>
+          <div class="focus-head">
+            <div>
+              <div class="focus-label">03 · CX</div>
+              <div class="focus-title">Customer experience</div>
+            </div>
+            <div class="focus-toggle">More ▾</div>
+          </div>
+          <div class="focus-more">
+            <p>Journeys that feel simple for customers and teams.</p>
+            <ul>
+              <li>Connect support, product, marketing and sales.</li>
+              <li>Turn feedback into a few concrete changes.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media" class="reveal reveal-stagger section-block">
+    <div class="section-inner">
+      <h2 data-stagger>Media & Stage</h2>
+      <p class="section-intro" data-stagger>
+        <span class="accent-text">Selected moments</span> from pitches, competitions and press coverage.
+      </p>
+
+      <div class="media-grid">
+
+        <!-- 1. DMNTS Finalist -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/P5FcddWj/IMG-2612.jpg"
+               alt="Monserrat Alvarez pitching at DMNTS reality show stage">
+          <div class="media-body">
+            <div class="media-tag">Pitch · DMNTS</div>
+            <div class="media-title">Finalist of DMNTS Reality Show</div>
+            <div class="media-meta">National TV broadcast · Teletica</div>
+          </div>
+        </article>
+
+        <!-- 2. DMNTS Talk -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/LXSGbNkb/IMG-2121.jpg"
+               alt="Monserrat Alvarez speaking on DMNTS stage with microphone headset">
+          <div class="media-body">
+            <div class="media-tag">Talk · DMNTS</div>
+            <div class="media-title">Sharing the Movy Health story</div>
+            <div class="media-meta">National audience · Teletica</div>
+          </div>
+        </article>
+
+        <!-- 3. Press – DMNTS selection -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/13YTyyGz/IMG-2057.jpg"
+               alt="News article announcing Movy Health as selected startup in DMNTS">
+          <div class="media-body">
+            <div class="media-tag">Press</div>
+            <div class="media-title">Movy Health selected among top startups</div>
+            <div class="media-meta">Teletica · August 2024</div>
+          </div>
+        </article>
+
+        <!-- 4. From school project to pet care brand -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/vZSjGGrD/IMG-4638.jpg"
+               alt="Monserrat Alvarez featured in El Financiero about Cat & Dog Company">
+          <div class="media-body">
+            <div class="media-tag">Press</div>
+            <div class="media-title">From school project to pet care brand</div>
+            <div class="media-meta">El Financiero · Cat & Dog Company</div>
+          </div>
+        </article>
+
+        <!-- 5. Youth entrepreneurship feature -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/7ZQcqq3Z/IMG-4781.jpg"
+               alt="Pulso Empresarial youth entrepreneurship feature with Monserrat Alvarez">
+          <div class="media-body">
+            <div class="media-tag">Media</div>
+            <div class="media-title">Youth entrepreneurship feature</div>
+            <div class="media-meta">Pulso Empresarial · Cat & Dog Company</div>
+          </div>
+        </article>
+
+        <!-- 6. Recognition at Get in the Ring -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/Cx6twwG1/IMG-7334.jpg"
+               alt="Monserrat Alvarez receiving Get in the Ring Costa Rica award">
+          <div class="media-body">
+            <div class="media-tag">Award</div>
+            <div class="media-title">Recognition at Get in the Ring Costa Rica</div>
+            <div class="media-meta">Entrepreneurship competition</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="reveal reveal-stagger section-block">
+    <div class="section-inner">
+      <h2 data-stagger>Experience</h2>
+      <p class="section-intro" data-stagger>
+        <span class="accent-text">A few examples</span> of where this way of working has been applied. Tap any card to see details.
+      </p>
+
+      <div class="exp-list">
+        <!-- Tobipets -->
+        <div class="exp-item js-exp" data-stagger data-has-carousel="true">
+          <div class="exp-main">
+            <div>
+              <div class="exp-role">Data, growth & CX for a pet e-commerce brand</div>
+              <div class="exp-org">tobipets.com · Sales, marketing, retention</div>
+            </div>
+            <div class="exp-meta-hint">View case ↗</div>
+          </div>
+
+          <!-- Hidden content for modal -->
+          <div class="exp-hidden" style="display:none;">
+            <div class="exp-carousel">
+              <div class="exp-carousel-header">
+                <img src="https://i.postimg.cc/5tWQ5qfk/images.png" alt="tobipets.com logo">
+                <div class="exp-carousel-header-text">
+                  tobipets.com — pet e-commerce connecting food, medicine and accessories with home delivery
+                  and recurring orders.
+                </div>
+              </div>
+
+              <div class="exp-carousel-track-wrap">
+                <div class="exp-carousel-track">
+                  <!-- SLIDE 1 – Doggy Box with McDonald's -->
+                  <div class="exp-slide">
+                    <img src="https://i.postimg.cc/5ttySPhN/Doggy-Box-Mc-2025.png" alt="Doggy Box campaign with McDonald's">
+                    <div class="exp-slide-caption">
+                      “Doggy Box” campaign in collaboration with McDonald's, combining brand awareness and digital growth.
+                    </div>
+                  </div>
+                  <!-- SLIDE 2 – Brand activation -->
+                  <div class="exp-slide">
+                    <img src="https://i.postimg.cc/G24mDHZv/PHOTO-2024-09-28-12-10-30.jpg" alt="Brand activation event for tobipets.com">
+                    <div class="exp-slide-caption">
+                      On-site brand activation, connecting offline experiences with online journeys and repeat purchases.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="exp-carousel-controls">
+                <div class="exp-carousel-arrows">
+                  <button class="exp-carousel-btn exp-carousel-prev" type="button">← Prev</button>
+                  <button class="exp-carousel-btn exp-carousel-next" type="button">Next →</button>
+                </div>
+                <div class="exp-carousel-dots">
+                  <div class="exp-carousel-dot active" data-index="0"></div>
+                  <div class="exp-carousel-dot" data-index="1"></div>
+                </div>
+              </div>
+            </div>
+
+            <p><strong>About tobipets.com</strong> — pet e-commerce focused on food, medicine and accessories, with a strong emphasis on repeat purchases and AutoShip-style subscriptions.</p>
+            <p><strong>Role</strong> — brought together analytics, growth and customer experience to make decisions easier week by week.</p>
+
+            <h4>Data & Business Intelligence</h4>
+            <ul>
+              <li>Structured sales, cohort and retention data to understand repurchase and subscription behaviour.</li>
+              <li>Defined a simple KPI set (revenue, cohorts, repeat rate, AutoShip adoption, churn).</li>
+              <li>Highlighted where the funnel was leaking and which segments were most likely to repeat.</li>
+            </ul>
+
+            <h4>Growth & Marketing Campaigns</h4>
+            <ul>
+              <li>Designed and executed marketing campaigns for acquisition and repeat purchases.</li>
+              <li>Supported automation journeys (onboarding, replenishment reminders, win-back flows).</li>
+              <li>Aligned messaging between campaigns, website and customer support so the journey felt coherent.</li>
+            </ul>
+
+            <h4>Brand Activation & Events</h4>
+            <ul>
+              <li>Collaborated on brand activation events in high-traffic locations to increase awareness and trust.</li>
+              <li>Connected offline events to digital journeys through specific offers and follow-up flows.</li>
+            </ul>
+
+            <h4>McDonald's Collaboration – Doggy Box</h4>
+            <ul>
+              <li>Contributed to the “Doggy Box” campaign with McDonald's, mixing physical experiences with online traffic and engagement.</li>
+              <li>Helped ensure the campaign translated into measurable demand, not just awareness.</li>
+            </ul>
+
+            <h4>Selected Milestones</h4>
+            <ul>
+              <li>Improved clarity on which segments were driving most of the recurring revenue.</li>
+              <li>Supported growth in repeat purchases and subscription adoption through clearer journeys.</li>
+              <li>Turned scattered data into simple, recurring views that the team could use every week.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Alisto · B2B restaurants & suppliers -->
+        <div class="exp-item js-exp" data-stagger>
+          <div class="exp-main">
+            <div>
+              <div class="exp-role">B2B sales & supplier acquisition</div>
+              <div class="exp-org">Alisto · Marketplace connecting restaurants & suppliers</div>
+            </div>
+            <div class="exp-meta-hint">View case ↗</div>
+          </div>
+
+          <div class="exp-hidden" style="display:none;">
+
+            <p><strong>About Alisto</strong> — a B2B marketplace that connects restaurants with food & beverage suppliers, simplifying ordering for restaurants and giving suppliers a platform to manage their catalogue and reach new clients.</p>
+
+            <p><strong>My role</strong> — I worked in the sales and supplier-side growth area, focusing on:</p>
+            <ul>
+              <li>Acquiring and onboarding new suppliers across key categories.</li>
+              <li>Building and executing the supplier acquisition strategy.</li>
+              <li>Maintaining long-term relationships and consistent communication with active suppliers.</li>
+              <li>Aligning expectations between restaurants and suppliers to improve fulfilment and product availability.</li>
+            </ul>
+
+            <h4>Impact for restaurants</h4>
+            <ul>
+              <li>Centralised, structured ordering with multiple suppliers instead of scattered WhatsApp messages.</li>
+              <li>Faster comparison of prices, presentations and availability.</li>
+              <li>Clear historical record of orders and spending.</li>
+            </ul>
+
+            <h4>Impact for suppliers</h4>
+            <ul>
+              <li>New customer acquisition through marketplace visibility.</li>
+              <li>Simplified order management instead of improvised channels.</li>
+              <li>Better communication flow for stock changes, replacements and delivery coordination.</li>
+            </ul>
+
+            <h4>Data & operational improvements</h4>
+            <ul>
+              <li>Identified priority suppliers based on growth, fulfilment quality and order frequency.</li>
+              <li>Mapped operational bottlenecks where orders were getting delayed or lost.</li>
+              <li>Helped create a cleaner product catalogue with comparable presentations.</li>
+            </ul>
+
+            <h4>Customer & supplier experience</h4>
+            <ul>
+              <li>Clarified the end-to-end ordering flow for restaurant teams.</li>
+              <li>Set operational standards with suppliers for faster confirmation and fewer errors.</li>
+              <li>Improved communication loops between both sides of the marketplace.</li>
+            </ul>
+
+            <h4>Selected milestones</h4>
+            <ul>
+              <li>Successful onboarding of new suppliers into high-demand categories.</li>
+              <li>Higher order consistency from restaurants through better supplier coverage.</li>
+              <li>Reduced friction by shifting suppliers from ad-hoc communication to platform-based order handling.</li>
+            </ul>
+
+            <!-- Alisto screenshot (large at the bottom) -->
+            <div class="exp-carousel" style="margin-top:12px;">
+              <div class="exp-carousel-header exp-carousel-header--large">
+                <img
+                  class="exp-header-screenshot"
+                  src="https://i.postimg.cc/wjPcDYsD/Image-26-11-25-at-11-58-AM.jpg"
+                  alt="Alisto operational interface for restaurants and suppliers"
+                >
+                <div class="exp-carousel-header-text">
+                  Snapshot of Alisto — restaurants centralise orders, suppliers manage requests and discover new clients.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vitta Health · Health-related digital project -->
+        <div class="exp-item js-exp" data-stagger>
+          <div class="exp-main">
+            <div>
+              <div class="exp-role">Founder · Product, strategy, sales & partnerships</div>
+              <div class="exp-org">Vitta Health · AI-powered medical automation platform</div>
+            </div>
+            <div class="exp-meta-hint">View case ↗</div>
+          </div>
+
+          <div class="exp-hidden" style="display:none;">
+
+            <p>
+              <strong>About Vitta Health</strong> — a healthtech platform that automates medical workflows using AI,
+              helping doctors reduce documentation time, improve patient communication and streamline clinical tasks.
+              I founded Vitta Health and led the product from idea to working platform.
+            </p>
+
+            <ul>
+              <li>AI-generated medical notes, summaries and clinical documents.</li>
+              <li>Smart triage and automated patient education.</li>
+              <li>Omnichannel communication (WhatsApp, web app, calls).</li>
+              <li>Predictive tools to identify demand peaks in medical services.</li>
+            </ul>
+
+            <h4>My role</h4>
+            <ul>
+              <li><strong>Founder & product lead:</strong> Defined the product vision, structure, technical architecture and feature roadmap.</li>
+              <li><strong>Strategy:</strong> Designed the go-to-market approach for doctors, clinics and health institutions.</li>
+              <li><strong>Sales:</strong> Led B2B sales, demos and onboarding for early clinical users and partners.</li>
+              <li><strong>Partnerships:</strong> Built and managed strategic relationships with health providers and organisations.</li>
+            </ul>
+
+            <h4>Key partnership</h4>
+            <p>
+              I led the partnership with <strong>Hospital Clínica Bíblica</strong>, the largest private hospital in Costa Rica,
+              to explore innovation initiatives around AI-assisted care and digital medical workflows.
+            </p>
+
+            <h4>Impact areas</h4>
+            <ul>
+              <li>Reduced documentation time for doctors by automating repetitive tasks.</li>
+              <li>Improved patient experience with faster communication and clearer instructions.</li>
+              <li>Helped clinics scale by standardising medical documentation quality.</li>
+              <li>Introduced automated flows that simplified scheduling, follow-ups and clinical communication.</li>
+            </ul>
+
+            <h4>Selected milestones</h4>
+            <ul>
+              <li>Founded the project and built the first working version of the platform.</li>
+              <li>Secured early B2B clients and clinical users.</li>
+              <li>Established a strategic partnership with a major health institution.</li>
+              <li>Designed a roadmap focused on multi-speciality workflows and offline-first capability.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="reveal section-block">
+    <div class="section-inner" style="text-align: center;">
+      <h2>Contact</h2>
+      <p class="section-intro" style="margin-left: auto; margin-right: auto;">
+        If you're hiring for a role in data, growth or CX and my profile feels relevant, you can reach me directly by email.
+      </p>
+
+      <div class="contact-actions">
+        <a
+          class="btn-primary"
+          href="mailto:monsealva31221@gmail.com?subject=Role%20opportunity%20-%20Data%2C%20Growth%20or%20CX&body=Hi%20Monserrat%2C%0D%0A%0D%0AI'm%20reaching%20out%20about%20a%20role%20related%20to%20data%2C%20growth%20or%20customer%20experience.%0D%0A%0D%0ACompany%3A%0D%0ARole%3A%0D%0AWhat%20we%20need%20help%20with%3A%0D%0A%0D%0AThanks!">
+          Email me about a role<span>↗</span>
+        </a>
+      </div>
+
+      <p class="contact-hint" style="margin-top: 10px; font-size: 0.85rem; color: #9ca3af;">
+        monsealva31221@gmail.com
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 · Monserrat Alvarez
+</footer>
+
+<!-- MODAL EXPERIENCE (REUSABLE) -->
+<div class="exp-modal" id="exp-modal" aria-hidden="true">
+  <div class="exp-modal-overlay"></div>
+  <div class="exp-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="exp-modal-title">
+    <button class="exp-modal-close" type="button" aria-label="Close">×</button>
+    <div class="exp-modal-header">
+      <div class="exp-modal-role" id="exp-modal-title"></div>
+      <div class="exp-modal-org"></div>
+    </div>
+    <div class="exp-modal-body"></div>
+  </div>
+</div>
+
+<script>
+  const header = document.getElementById('site-header');
+  const progressBar = document.getElementById('scroll-progress');
+
+  window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-ready');
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header.classList.add('header--scrolled');
+    } else {
+      header.classList.remove('header--scrolled');
+    }
+
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  });
+
+  // Scroll reveal + stagger
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+
+        if (entry.target.classList.contains('reveal-stagger')) {
+          const children = entry.target.querySelectorAll('[data-stagger]');
+          children.forEach((child, index) => {
+            child.style.transitionDelay = (0.06 * index) + 's';
+            child.classList.add('visible-stagger');
+          });
+        }
+
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14 });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Section active + nav highlight
+  const sectionBlocks = document.querySelectorAll('.section-block');
+  const navLinks = document.querySelectorAll('.nav a[data-section]');
+
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.id;
+      if (!id) return;
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add('section-active');
+
+        navLinks.forEach(link => {
+          if (link.dataset.section === id) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      } else {
+        if (id !== 'hero') {
+          entry.target.classList.remove('section-active');
+        }
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sectionBlocks.forEach(sec => sectionObserver.observe(sec));
+
+  // Expand / collapse Focus cards
+  document.querySelectorAll('.js-focus').forEach(card => {
+    card.addEventListener('click', () => {
+      const expanded = card.classList.toggle('expanded');
+      const toggle = card.querySelector('.focus-toggle');
+      if (toggle) toggle.textContent = expanded ? 'Less ▴' : 'More ▾';
+    });
+  });
+
+  // MODAL EXPERIENCE
+  const expModal = document.getElementById('exp-modal');
+  const expModalRole = expModal.querySelector('.exp-modal-role');
+  const expModalOrg = expModal.querySelector('.exp-modal-org');
+  const expModalBody = expModal.querySelector('.exp-modal-body');
+  const expModalCloseBtn = expModal.querySelector('.exp-modal-close');
+  const expModalOverlay = expModal.querySelector('.exp-modal-overlay');
+
+  function initExpCarousel() {
+    const carousel = expModalBody.querySelector('.exp-carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.exp-carousel-track');
+    const slides = carousel.querySelectorAll('.exp-slide');
+    const prevBtn = carousel.querySelector('.exp-carousel-prev');
+    const nextBtn = carousel.querySelector('.exp-carousel-next');
+    const dots = carousel.querySelectorAll('.exp-carousel-dot');
+
+    // Si es solo imagen estática (Alisto) no habrá track, slides ni controles
+    if (!track || slides.length === 0) return;
+
+    let currentIndex = 0;
+
+    function updateCarousel(index) {
+      const clampedIndex = Math.max(0, Math.min(index, slides.length - 1));
+      currentIndex = clampedIndex;
+      const offset = -clampedIndex * 100;
+      track.style.transform = 'translateX(' + offset + '%)';
+
+      dots.forEach(dot => {
+        const dotIndex = parseInt(dot.getAttribute('data-index'), 10);
+        dot.classList.toggle('active', dotIndex === clampedIndex);
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateCarousel(currentIndex - 1);
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateCarousel(currentIndex + 1);
+      });
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const dotIndex = parseInt(dot.getAttribute('data-index'), 10);
+        updateCarousel(dotIndex);
+      });
+    });
+
+    updateCarousel(0);
+  }
+
+  function openExpModal(item) {
+    const roleEl = item.querySelector('.exp-role');
+    const orgEl = item.querySelector('.exp-org');
+    const hiddenContent = item.querySelector('.exp-hidden');
+
+    expModalRole.textContent = roleEl ? roleEl.textContent.trim() : '';
+    expModalOrg.textContent = orgEl ? orgEl.textContent.trim() : '';
+    expModalBody.innerHTML = hiddenContent ? hiddenContent.innerHTML : '';
+
+    expModal.classList.add('open');
+    expModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // Init carousel if present (e.g. tobipets case)
+    initExpCarousel();
+  }
+
+  function closeExpModal() {
+    expModal.classList.remove('open');
+    expModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    expModalBody.innerHTML = '';
+  }
+
+  document.querySelectorAll('.js-exp').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      openExpModal(item);
+    });
+  });
+
+  expModalCloseBtn.addEventListener('click', () => {
+    closeExpModal();
+  });
+
+  expModalOverlay.addEventListener('click', () => {
+    closeExpModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && expModal.classList.contains('open')) {
+      closeExpModal();
+    }
+  });
+
+  // KPI number animation when panel is visible
+  const kpiPanel = document.getElementById('kpi-panel');
+  const counters = document.querySelectorAll('.js-counter');
+  let kpiAnimated = false;
+
+  function animateCounter(el, duration = 1400) {
+    const from = parseFloat(el.dataset.from || '0');
+    const to = parseFloat(el.dataset.to || '0');
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const startTime = performance.now();
+
+    function frame(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const value = from + (to - from) * progress;
+      el.textContent = prefix + value.toFixed(decimals) + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(frame);
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  const kpiObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !kpiAnimated) {
+        kpiAnimated = true;
+        counters.forEach(el => animateCounter(el));
+        kpiObserver.unobserve(kpiPanel);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  if (kpiPanel) {
+    kpiObserver.observe(kpiPanel);
+  }
+
+  // Tilt 3D suave para el panel de KPIs
+  function addTiltEffect(element, maxTilt = 8) {
+    if (!element) return;
+
+    let rect = element.getBoundingClientRect();
+
+    element.addEventListener('mousemove', (event) => {
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const halfWidth = rect.width / 2;
+      const halfHeight = rect.height / 2;
+
+      const rotateX = ((y - halfHeight) / halfHeight) * -maxTilt;
+      const rotateY = ((x - halfWidth) / halfWidth) * maxTilt;
+
+      element.style.transform =
+        'perspective(700px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-3px)';
+    });
+
+    element.addEventListener('mouseleave', () => {
+      element.style.transform = '';
+    });
+
+    window.addEventListener('resize', () => {
+      rect = element.getBoundingClientRect();
+    });
+  }
+
+  if (window.matchMedia('(pointer: fine)').matches) {
+    addTiltEffect(document.querySelector('.hero-panel'));
+  }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
