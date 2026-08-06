@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Monserrat Alvarez | Data, Growth & CX</title>
+  <title>Monserrat Alvarez | AI Product Manager &amp; Builder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="I connect data, growth and customer experience so teams can make clearer decisions."
+    content="AI Product Manager and hands-on builder who turns customer problems into shipped AI products, from discovery and strategy to development and go-to-market."
   />
+  <meta property="og:title" content="Monserrat Alvarez | AI Product Manager & Builder">
+  <meta property="og:description" content="From product discovery and strategy to building, shipping and go-to-market — including the code.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://monse2201.github.io/portfolio/">
+  <meta property="og:image" content="https://monse2201.github.io/portfolio/preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
@@ -30,6 +36,12 @@
     }
 
     a { text-decoration: none; color: inherit; }
+
+    .js-focus:focus-visible,
+    .js-exp:focus-visible {
+      outline: 2px solid #4f46e5;
+      outline-offset: 2px;
+    }
 
     main {
       max-width: 1040px;
@@ -198,6 +210,28 @@
       box-shadow: 0 6px 14px rgba(148,163,184,0.4);
       border-radius: 999px;
     }
+    .nav a.nav-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 600;
+      color: #020617;
+      border: 1px solid rgba(15,23,42,0.18);
+      background: rgba(255,255,255,0.9);
+    }
+    .nav a.nav-github:hover {
+      background: #020617;
+      color: #f9fafb;
+      border-color: #020617;
+    }
+    header.header--scrolled .nav a.nav-github {
+      border-color: rgba(229,231,235,0.5);
+      color: #e5e7eb;
+    }
+    header.header--scrolled .nav a.nav-github:hover {
+      background: #e5e7eb;
+      color: #020617;
+    }
 
     /* BUTTONS */
     .btn-primary {
@@ -249,6 +283,28 @@
       transform: translateY(-1px);
       box-shadow: 0 10px 24px rgba(148,163,184,0.35);
     }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 20px;
+      border-radius: 999px;
+      background: #020617;
+      color: #f9fafb;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 1px solid #020617;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+    .btn-dark:hover {
+      transform: translateY(-1px) scale(1.01);
+      background: #111827;
+      box-shadow: 0 16px 40px rgba(15,23,42,0.45);
+    }
+    .btn-dark span { font-size: 1rem; }
 
     /* REVEAL BASE */
     .reveal {
@@ -336,11 +392,20 @@
       align-items: center;
       gap: 4px;
     }
+    .hero-badge.hero-badge--dark {
+      background: linear-gradient(#020617, #020617) padding-box,
+                  linear-gradient(90deg, #4f46e5, #0ea5e9, #22c55e) border-box;
+      color: #f9fafb;
+      font-weight: 600;
+    }
     .hero-badge-dot {
       width: 6px;
       height: 6px;
       border-radius: 999px;
       background: radial-gradient(circle at 30% 30%, #4f46e5, #0ea5e9);
+    }
+    .hero-badge.hero-badge--dark .hero-badge-dot {
+      background: radial-gradient(circle at 30% 30%, #38bdf8, #22c55e);
     }
 
     .hero-actions {
@@ -353,6 +418,12 @@
       font-size: 0.9rem;
       color: #6b7280;
       max-width: 440px;
+    }
+    .hero-location {
+      font-size: 0.82rem;
+      color: #9ca3af;
+      max-width: 440px;
+      margin-top: 4px;
     }
 
     /* SCROLL CUE */
@@ -442,7 +513,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
       margin-bottom: 10px;
     }
@@ -705,6 +776,22 @@
       color: #4b5563;
     }
 
+    .tech-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 8px;
+    }
+    .tech-chip {
+      font-size: 0.74rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.05);
+      border: 1px solid rgba(15,23,42,0.1);
+      color: #374151;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
     /* MEDIA GRID */
     .media-grid {
       display: grid;
@@ -796,6 +883,228 @@
       filter: brightness(1.08);
     }
 
+    /* BUILT & SHIPPED (repos) */
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .repo-card {
+      padding: 14px 15px 15px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 0 0, #0b1120, #020617);
+      color: #e5e7eb;
+      border: 1px solid rgba(15,23,42,0.85);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.5);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .repo-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(56,189,248,0.3), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(129,140,248,0.35), transparent 55%);
+      opacity: 0.7;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+    .repo-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 60px rgba(15,23,42,0.7);
+      border-color: rgba(129,140,248,0.8);
+    }
+    .repo-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+    .repo-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .repo-visibility {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      color: #cbd5e1;
+    }
+    .repo-desc {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .repo-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.78rem;
+      color: #94a3b8;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .repo-stats strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+    .repo-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      position: relative;
+      z-index: 1;
+    }
+    .repo-stack span {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #e5e7eb;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .toolkit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .toolkit-card {
+      padding: 13px 15px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(226,232,240,0.9);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .toolkit-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(148,163,184,0.3);
+      border-color: rgba(129,140,248,0.6);
+    }
+    .toolkit-card-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9ca3af;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .toolkit-card-label::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #4f46e5, #0ea5e9);
+    }
+    .toolkit-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .toolkit-chip {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.04);
+      border: 1px solid rgba(15,23,42,0.1);
+      color: #111827;
+      font-weight: 500;
+    }
+    .toolkit-chip.toolkit-chip--ai {
+      background: linear-gradient(#f9fafb, #f9fafb) padding-box,
+                  linear-gradient(90deg, #4f46e5, #0ea5e9, #22c55e) border-box;
+      border: 1px solid transparent;
+      font-weight: 600;
+      color: #1e1b4b;
+    }
+
+    /* TIMELINE (compact Experience list) */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .timeline-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      padding: 11px 4px;
+      border-bottom: 1px solid rgba(226,232,240,0.9);
+      flex-wrap: wrap;
+    }
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+    .timeline-role {
+      font-weight: 600;
+      color: #111827;
+      font-size: 0.92rem;
+    }
+    .timeline-org {
+      font-weight: 400;
+      color: #6b7280;
+    }
+    .timeline-date {
+      font-size: 0.82rem;
+      color: #9ca3af;
+      white-space: nowrap;
+    }
+    .timeline-type {
+      display: block;
+      font-size: 0.72rem;
+      color: #9ca3af;
+      text-align: right;
+      margin-top: 1px;
+    }
+
+    /* RECOGNITION */
+    .recognition-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .recognition-item {
+      padding: 11px 13px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(226,232,240,0.9);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .recognition-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(148,163,184,0.3);
+      border-color: rgba(129,140,248,0.6);
+    }
+    .recognition-org {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #111827;
+      margin-bottom: 2px;
+    }
+    .recognition-detail {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
     /* EXPERIENCE */
     .exp-list {
       display: grid;
@@ -836,6 +1145,63 @@
     .exp-item:hover::before {
       opacity: 1;
       width: 4px;
+    }
+    .exp-item--flagship {
+      border-color: rgba(129,140,248,0.7);
+      background: linear-gradient(180deg, rgba(238,242,255,0.7), rgba(255,255,255,0.97));
+    }
+    .exp-item--flagship::before {
+      opacity: 0.9;
+      width: 4px;
+    }
+    .exp-flagship-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      color: #4f46e5;
+      margin-bottom: 3px;
+    }
+    .exp-stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.78rem;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+    .exp-stat-row strong {
+      color: #111827;
+      font-weight: 700;
+    }
+    .exp-note {
+      font-size: 0.85rem;
+      color: #6b7280;
+      background: rgba(79,70,229,0.06);
+      border: 1px solid rgba(79,70,229,0.15);
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+    }
+    .additional-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(226,232,240,0.9);
+    }
+    .exp-item--secondary {
+      background: rgba(249,250,251,0.9);
+      box-shadow: none;
+    }
+    .exp-item--secondary::before {
+      opacity: 0.15;
+    }
+    .exp-item--secondary .exp-role {
+      font-size: 0.95rem;
     }
     .exp-main {
       display: flex;
@@ -1153,6 +1519,26 @@
       }
       header {
         padding-inline: 14px;
+        flex-wrap: wrap;
+        row-gap: 8px;
+      }
+      .logo-wrap {
+        flex: 1 1 auto;
+      }
+      .nav {
+        order: 3;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+      .nav a {
+        white-space: nowrap;
       }
       main {
         padding-inline: 16px;
@@ -1162,6 +1548,49 @@
       }
       .media-item img {
         height: 200px;
+      }
+      section.section-block:not(#hero) .section-inner {
+        padding: 16px 14px 18px;
+      }
+      .hero-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+      }
+      .hero-kpi {
+        padding: 8px;
+      }
+      .hero-kpi-value {
+        font-size: 1.05rem;
+      }
+      .repo-grid, .toolkit-grid, .focus-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-dark {
+        width: 100%;
+      }
+      .contact-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .logo-text {
+        font-size: 0.82rem;
+      }
+      .logo-sub {
+        font-size: 0.72rem;
+      }
+      h2 {
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -1175,14 +1604,17 @@
     <div class="logo-mark">M</div>
     <div>
       <div class="logo-text">MONSERRAT ALVAREZ</div>
-      <div class="logo-sub">Data · Growth · Customer Experience</div>
+      <div class="logo-sub">AI Product Manager &amp; Builder</div>
     </div>
   </div>
   <nav class="nav">
-    <a href="#focus" data-section="focus">Focus</a>
-    <a href="#media" data-section="media">Media</a>
+    <a href="#work" data-section="work">Work</a>
+    <a href="#how" data-section="how">How I Work</a>
     <a href="#experience" data-section="experience">Experience</a>
+    <a href="#toolkit" data-section="toolkit">Toolkit</a>
+    <a href="#recognition" data-section="recognition">Recognition</a>
     <a href="#contact" data-section="contact">Contact</a>
+    <a href="https://www.linkedin.com/in/monserrat-s-339b8b252/" target="_blank" rel="noopener" class="nav-github">LinkedIn ↗</a>
   </nav>
 </header>
 
@@ -1190,39 +1622,49 @@
   <!-- HERO -->
   <section id="hero" class="section-block">
     <div class="hero-content reveal reveal-stagger section-inner">
-      <div class="hero-eyebrow" data-stagger>Data · Growth · CX</div>
+      <div class="hero-eyebrow" data-stagger>AI Product Manager &amp; Builder</div>
       <h1 class="hero-title" data-stagger>
-        One partner for<br>
-        <span>data, growth and customer experience.</span>
+        I turn customer problems<br>
+        <span>into AI products — from strategy to shipped code.</span>
       </h1>
       <p class="hero-body" data-stagger>
-        I help teams turn data into clear decisions and better customer journeys.
+        From discovery and product strategy to development and go-to-market, I own the path from problem to production.
       </p>
 
       <div class="hero-badges" data-stagger>
-        <span class="hero-badge">
+        <span class="hero-badge hero-badge--dark">
           <span class="hero-badge-dot"></span>
-          Business intelligence
+          AI Product
         </span>
         <span class="hero-badge">
           <span class="hero-badge-dot"></span>
-          Marketing & revenue
+          Product Strategy
         </span>
         <span class="hero-badge">
           <span class="hero-badge-dot"></span>
-          Customer experience
+          Growth
+        </span>
+        <span class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Python
         </span>
       </div>
 
       <div class="hero-actions" data-stagger>
         <a
           class="btn-primary"
-          href="mailto:monsealva31221@gmail.com?subject=Role%20opportunity%20-%20Data%2C%20Growth%20or%20CX&body=Hi%20Monserrat%2C%0D%0A%0D%0AI'm%20reaching%20out%20about%20a%20role%20related%20to%20data%2C%20growth%20or%20customer%20experience.%0D%0A%0D%0ACompany%3A%0D%0ARole%3A%0D%0AWhat%20we%20need%20help%20with%3A%0D%0A%0D%0AThanks!">
-          Talk about a role<span>↗</span>
+          href="mailto:monsealva31221@gmail.com?subject=Role%20opportunity%20%E2%80%94%20Product%20%2F%20AI&body=Hi%20Monserrat%2C%0D%0A%0D%0AI'm%20reaching%20out%20about%20a%20role%20related%20to%20AI%20product%20or%20product%20management.%0D%0A%0D%0ACompany%3A%0D%0ARole%3A%0D%0AWhat%20we%20need%20help%20with%3A%0D%0A%0D%0AThanks!">
+          Discuss a role<span>↗</span>
+        </a>
+        <a class="btn-ghost" href="https://www.linkedin.com/in/monserrat-s-339b8b252/" target="_blank" rel="noopener">
+          View LinkedIn<span>↗</span>
         </a>
       </div>
       <div class="hero-note" data-stagger>
-        Open to remote roles and projects where data, growth and CX need to work together.
+        Looking for AI Product, Product Management and Product &amp; Growth opportunities in the UK.
+      </div>
+      <div class="hero-location" data-stagger>
+        Based in Costa Rica · UK visa route in progress · Relocating to London in 2027 · Open to remote opportunities before relocation
       </div>
       <div class="scroll-cue" data-stagger>
         <span>Scroll</span>
@@ -1234,237 +1676,192 @@
       <div class="hero-panel" id="kpi-panel">
         <div class="hero-panel-inner">
           <div class="hero-panel-header">
-            <div class="hero-panel-title highlight-kpi">What I tend to look at</div>
-            <div class="hero-panel-tag">Example snapshot</div>
+            <div class="hero-panel-title highlight-kpi">Selected impact</div>
+            <div class="hero-panel-tag">Built and shipped</div>
           </div>
           <div class="hero-grid">
             <div class="hero-kpi">
-              <div class="hero-kpi-label">Revenue</div>
+              <div class="hero-kpi-label">AI products shipped</div>
               <div
                 class="hero-kpi-value js-counter"
                 data-from="0"
-                data-to="14"
-                data-decimals="0"
-                data-prefix="+"
-                data-suffix="% MoM"
-              >+0% MoM</div>
-              <div class="hero-kpi-note">Returning clients</div>
-            </div>
-            <div class="hero-kpi">
-              <div class="hero-kpi-label">Retention</div>
-              <div
-                class="hero-kpi-value js-counter"
-                data-from="0"
-                data-to="74"
+                data-to="2"
                 data-decimals="0"
                 data-prefix=""
-                data-suffix="%"
-              >0%</div>
-              <div class="hero-kpi-note">After CX changes</div>
+                data-suffix=""
+              >0</div>
+              <div class="hero-kpi-note">Vitta Health · Clonocare</div>
             </div>
             <div class="hero-kpi">
-              <div class="hero-kpi-label">Conversion</div>
+              <div class="hero-kpi-label">Clinical consultations</div>
               <div
                 class="hero-kpi-value js-counter"
                 data-from="0"
-                data-to="3.1"
-                data-decimals="1"
+                data-to="415"
+                data-decimals="0"
                 data-prefix=""
-                data-suffix="%"
-              >0.0%</div>
-              <div class="hero-kpi-note">Handoff to sales</div>
+                data-suffix="+"
+              >0+</div>
+              <div class="hero-kpi-note">Run through Vitta Health</div>
+            </div>
+            <div class="hero-kpi">
+              <div class="hero-kpi-label">Physicians onboarded</div>
+              <div
+                class="hero-kpi-value js-counter"
+                data-from="0"
+                data-to="20"
+                data-decimals="0"
+                data-prefix=""
+                data-suffix=""
+              >0</div>
+              <div class="hero-kpi-note">Live clinical users</div>
+            </div>
+            <div class="hero-kpi">
+              <div class="hero-kpi-label">Commits, solo</div>
+              <div
+                class="hero-kpi-value js-counter"
+                data-from="0"
+                data-to="173"
+                data-decimals="0"
+                data-prefix=""
+                data-suffix=""
+              >0</div>
+              <div class="hero-kpi-note">vitta-platform, 1 contributor</div>
             </div>
           </div>
           <div class="hero-panel-foot">
-            <span>Where are we losing people?</span>
-            <span>What is signal vs. noise?</span>
+            <span>From discovery to production</span>
+            <span>See Selected Work ↓</span>
           </div>
         </div>
       </div>
     </aside>
   </section>
 
-  <!-- STORY CONNECTOR -->
-  <section class="flow-section reveal section-block">
+  <!-- SELECTED WORK -->
+  <section id="work" class="reveal reveal-stagger section-block">
     <div class="section-inner">
-      <div class="flow-label">
-        How I usually approach a project
-      </div>
-      <div class="flow-steps">
-        <div class="flow-step">
-          <div class="flow-step-index">01</div>
-          <div class="flow-step-text">Clarify where you are and what the numbers really say.</div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-step-index">02</div>
-          <div class="flow-step-text">Pick a few realistic bets the team can own.</div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-step-index">03</div>
-          <div class="flow-step-text">Align the customer experience so those bets stick.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOCUS -->
-  <section id="focus" class="reveal reveal-stagger section-block">
-    <div class="section-inner">
-      <h2 data-stagger>Focus</h2>
+      <h2 data-stagger>Selected Work</h2>
       <p class="section-intro" data-stagger>
-        <span class="accent-text">The work usually lives in these three pillars</span> — tap to open each one.
-      </p>
-
-      <div class="focus-grid">
-        <div class="focus-item js-focus" data-stagger>
-          <div class="focus-head">
-            <div>
-              <div class="focus-label">01 · Data</div>
-              <div class="focus-title">Business intelligence</div>
-            </div>
-            <div class="focus-toggle">More ▾</div>
-          </div>
-          <div class="focus-more">
-            <p>Make data simple enough to use every week.</p>
-            <ul>
-              <li>Define a small, clear metric set.</li>
-              <li>Connect data from the tools you already have.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="focus-item js-focus" data-stagger>
-          <div class="focus-head">
-            <div>
-              <div class="focus-label">02 · Growth</div>
-              <div class="focus-title">Marketing & revenue</div>
-            </div>
-            <div class="focus-toggle">More ▾</div>
-          </div>
-          <div class="focus-more">
-            <p>Growth that matches how people actually behave.</p>
-            <ul>
-              <li>Map the journey from first touch to repeat.</li>
-              <li>Spot the biggest leaks in your funnel.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="focus-item js-focus" data-stagger>
-          <div class="focus-head">
-            <div>
-              <div class="focus-label">03 · CX</div>
-              <div class="focus-title">Customer experience</div>
-            </div>
-            <div class="focus-toggle">More ▾</div>
-          </div>
-          <div class="focus-more">
-            <p>Journeys that feel simple for customers and teams.</p>
-            <ul>
-              <li>Connect support, product, marketing and sales.</li>
-              <li>Turn feedback into a few concrete changes.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MEDIA -->
-  <section id="media" class="reveal reveal-stagger section-block">
-    <div class="section-inner">
-      <h2 data-stagger>Media & Stage</h2>
-      <p class="section-intro" data-stagger>
-        <span class="accent-text">Selected moments</span> from pitches, competitions and press coverage.
-      </p>
-
-      <div class="media-grid">
-
-        <!-- 1. DMNTS Finalist -->
-        <article class="media-item" data-stagger>
-          <img src="https://i.postimg.cc/P5FcddWj/IMG-2612.jpg"
-               alt="Monserrat Alvarez pitching at DMNTS reality show stage">
-          <div class="media-body">
-            <div class="media-tag">Pitch · DMNTS</div>
-            <div class="media-title">Finalist of DMNTS Reality Show</div>
-            <div class="media-meta">National TV broadcast · Teletica</div>
-          </div>
-        </article>
-
-        <!-- 2. DMNTS Talk -->
-        <article class="media-item" data-stagger>
-          <img src="https://i.postimg.cc/LXSGbNkb/IMG-2121.jpg"
-               alt="Monserrat Alvarez speaking on DMNTS stage with microphone headset">
-          <div class="media-body">
-            <div class="media-tag">Talk · DMNTS</div>
-            <div class="media-title">Sharing the Movy Health story</div>
-            <div class="media-meta">National audience · Teletica</div>
-          </div>
-        </article>
-
-        <!-- 3. Press – DMNTS selection -->
-        <article class="media-item" data-stagger>
-          <img src="https://i.postimg.cc/13YTyyGz/IMG-2057.jpg"
-               alt="News article announcing Movy Health as selected startup in DMNTS">
-          <div class="media-body">
-            <div class="media-tag">Press</div>
-            <div class="media-title">Movy Health selected among top startups</div>
-            <div class="media-meta">Teletica · August 2024</div>
-          </div>
-        </article>
-
-        <!-- 4. From school project to pet care brand -->
-        <article class="media-item" data-stagger>
-          <img src="https://i.postimg.cc/vZSjGGrD/IMG-4638.jpg"
-               alt="Monserrat Alvarez featured in El Financiero about Cat & Dog Company">
-          <div class="media-body">
-            <div class="media-tag">Press</div>
-            <div class="media-title">From school project to pet care brand</div>
-            <div class="media-meta">El Financiero · Cat & Dog Company</div>
-          </div>
-        </article>
-
-        <!-- 5. Youth entrepreneurship feature -->
-        <article class="media-item" data-stagger>
-          <img src="https://i.postimg.cc/7ZQcqq3Z/IMG-4781.jpg"
-               alt="Pulso Empresarial youth entrepreneurship feature with Monserrat Alvarez">
-          <div class="media-body">
-            <div class="media-tag">Media</div>
-            <div class="media-title">Youth entrepreneurship feature</div>
-            <div class="media-meta">Pulso Empresarial · Cat & Dog Company</div>
-          </div>
-        </article>
-
-        <!-- 6. Recognition at Get in the Ring -->
-        <article class="media-item" data-stagger>
-          <img src="https://i.postimg.cc/Cx6twwG1/IMG-7334.jpg"
-               alt="Monserrat Alvarez receiving Get in the Ring Costa Rica award">
-          <div class="media-body">
-            <div class="media-tag">Award</div>
-            <div class="media-title">Recognition at Get in the Ring Costa Rica</div>
-            <div class="media-meta">Entrepreneurship competition</div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="reveal reveal-stagger section-block">
-    <div class="section-inner">
-      <h2 data-stagger>Experience</h2>
-      <p class="section-intro" data-stagger>
-        <span class="accent-text">A few examples</span> of where this way of working has been applied. Tap any card to see details.
+        <span class="accent-text">I lead products end to end — from customer discovery and product strategy to delivery, adoption and measurable impact.</span>
+        When needed, I can prototype and build the product myself. Tap any card to see the full case.
       </p>
 
       <div class="exp-list">
-        <!-- Tobipets -->
-        <div class="exp-item js-exp" data-stagger data-has-carousel="true">
+
+        <!-- Vitta Health · FLAGSHIP -->
+        <div class="exp-item js-exp exp-item--flagship" data-stagger tabindex="0" role="button" aria-label="View Vitta Health case study">
           <div class="exp-main">
             <div>
-              <div class="exp-role">Data, growth & CX for a pet e-commerce brand</div>
-              <div class="exp-org">tobipets.com · Sales, marketing, retention</div>
+              <div class="exp-flagship-tag">Flagship · Founder-built, end to end</div>
+              <div class="exp-role">Vitta Health — Founder &amp; AI Product Lead</div>
+              <div class="exp-org">AI clinical documentation platform</div>
+              <div class="exp-stat-row">
+                <span><strong>173</strong> commits, solo</span>
+                <span><strong>20</strong> physicians</span>
+                <span><strong>415</strong> consultations</span>
+              </div>
+            </div>
+            <div class="exp-meta-hint">View case ↗</div>
+          </div>
+
+          <div class="exp-hidden" style="display:none;">
+
+            <p class="exp-note">
+              Vitta Health (product name <strong>VittaScribe</strong>) is the current, focused version of an idea I started
+              as <strong>CareConnect</strong> and later grew into <strong>Movy Health</strong> — the name you'll see in some of
+              the press and TV coverage below. Same founder, same journey, evolved product.
+            </p>
+
+            <h4>Problem</h4>
+            <p>Doctors spend significant time on documentation instead of patient care — notes, summaries and clinical records eat into the consultation itself.</p>
+
+            <h4>Ownership</h4>
+            <p>Sole founder — owned the full path from discovery to go-to-market:</p>
+            <ul>
+              <li>Product discovery → architecture → development → testing → go-to-market → B2B partnerships.</li>
+              <li>Defined the product vision, technical architecture and feature roadmap.</li>
+              <li>Led B2B sales, demos and onboarding for early clinical users and partners, including the relationship with <strong>Hospital Clínica Bíblica</strong>, the largest private hospital in Costa Rica.</li>
+            </ul>
+
+            <h4>What I shipped</h4>
+            <p>An AI clinical documentation platform that transforms consultations into structured medical documentation, using an OpenAI Whisper + GPT pipeline on a Python/Flask + PostgreSQL backend.</p>
+
+            <h4>Impact</h4>
+            <ul>
+              <li>20 physicians onboarded, 415 consultations run through the platform.</li>
+              <li>173 commits, 1 contributor — built and shipped solo, from idea to production.</li>
+              <li>Designed to reduce repetitive documentation and let doctors complete records during or shortly after the consultation.</li>
+            </ul>
+
+            <div class="tech-chip-row">
+              <span class="tech-chip">Python</span><span class="tech-chip">Flask</span><span class="tech-chip">PostgreSQL</span>
+              <span class="tech-chip">OpenAI Whisper</span><span class="tech-chip">GPT</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Clonocare -->
+        <div class="exp-item js-exp" data-stagger tabindex="0" role="button" aria-label="View Clonocare case study">
+          <div class="exp-main">
+            <div>
+              <div class="exp-role">Clonocare — Principal Developer, AI Product</div>
+              <div class="exp-org">Asynchronous medical consultation platform</div>
+              <div class="exp-stat-row">
+                <span>4-stage AI orchestration pipeline</span>
+                <span>Real physician pilot</span>
+              </div>
+            </div>
+            <div class="exp-meta-hint">View case ↗</div>
+          </div>
+
+          <div class="exp-hidden" style="display:none;">
+
+            <h4>Problem</h4>
+            <p>Patients needing a medical opinion often face long waits for a live appointment, and doctors need structured, reliable intake data before they can act on a case.</p>
+
+            <h4>Ownership</h4>
+            <p>Contracted as principal developer — owned the technical build end-to-end, from architecture to a completed physician pilot.</p>
+            <ul>
+              <li>Designed and built the AI orchestration pipeline (classifier, conversational agent, and structuring layer) using the Claude API.</li>
+              <li>Built the doctor console and patient-facing flows in Bubble, including onboarding wizards and the payment verification flow.</li>
+              <li>Developed the backend on Xano: conversation history handling, lab results flow, doctor response endpoints with automated email, and a background job to close expired conversations.</li>
+            </ul>
+
+            <h4>What I shipped</h4>
+            <ul>
+              <li>4-stage AI orchestration pipeline (classifier → conversational agent → structuring layer → payment verification) built on the Claude API.</li>
+              <li>6 endpoints powering the doctor console alone, plus patient onboarding and payment verification flows.</li>
+              <li>Bubble frontend wired directly to the Xano backend through REST APIs.</li>
+            </ul>
+
+            <h4>Impact</h4>
+            <ul>
+              <li>Production-ready Claude API integration, validated through real physician consultations.</li>
+              <li>A physician completed a full pilot of the platform using it in real consultations.</li>
+              <li>Delivered under a signed software development contract, later expanded in scope.</li>
+            </ul>
+
+            <div class="tech-chip-row">
+              <span class="tech-chip">Claude API</span><span class="tech-chip">Xano</span>
+              <span class="tech-chip">XanoScript</span><span class="tech-chip">Bubble</span><span class="tech-chip">REST APIs</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Tobipets -->
+        <div class="exp-item js-exp" data-stagger data-has-carousel="true" tabindex="0" role="button" aria-label="View tobipets.com case study">
+          <div class="exp-main">
+            <div>
+              <div class="exp-role">Tobipets.com — Data, Growth &amp; CX</div>
+              <div class="exp-org">Pet e-commerce · Sales, marketing, retention</div>
+              <div class="exp-stat-row">
+                <span><strong>82,000+</strong> CRM records unified</span>
+                <span><strong>11,400+</strong> leads from one campaign</span>
+                <span><strong>350+</strong> conversions</span>
+              </div>
             </div>
             <div class="exp-meta-hint">View case ↗</div>
           </div>
@@ -1473,7 +1870,7 @@
           <div class="exp-hidden" style="display:none;">
             <div class="exp-carousel">
               <div class="exp-carousel-header">
-                <img src="https://i.postimg.cc/5tWQ5qfk/images.png" alt="tobipets.com logo">
+                <img src="https://i.postimg.cc/5tWQ5qfk/images.png" alt="tobipets.com logo" loading="lazy">
                 <div class="exp-carousel-header-text">
                   tobipets.com — pet e-commerce connecting food, medicine and accessories with home delivery
                   and recurring orders.
@@ -1484,14 +1881,14 @@
                 <div class="exp-carousel-track">
                   <!-- SLIDE 1 – Doggy Box with McDonald's -->
                   <div class="exp-slide">
-                    <img src="https://i.postimg.cc/5ttySPhN/Doggy-Box-Mc-2025.png" alt="Doggy Box campaign with McDonald's">
+                    <img src="https://i.postimg.cc/5ttySPhN/Doggy-Box-Mc-2025.png" alt="Doggy Box campaign with McDonald's" loading="lazy">
                     <div class="exp-slide-caption">
                       “Doggy Box” campaign in collaboration with McDonald's, combining brand awareness and digital growth.
                     </div>
                   </div>
                   <!-- SLIDE 2 – Brand activation -->
                   <div class="exp-slide">
-                    <img src="https://i.postimg.cc/G24mDHZv/PHOTO-2024-09-28-12-10-30.jpg" alt="Brand activation event for tobipets.com">
+                    <img src="https://i.postimg.cc/G24mDHZv/PHOTO-2024-09-28-12-10-30.jpg" alt="Brand activation event for tobipets.com" loading="lazy">
                     <div class="exp-slide-caption">
                       On-site brand activation, connecting offline experiences with online journeys and repeat purchases.
                     </div>
@@ -1514,56 +1911,54 @@
             <p><strong>About tobipets.com</strong> — pet e-commerce focused on food, medicine and accessories, with a strong emphasis on repeat purchases and AutoShip-style subscriptions.</p>
             <p><strong>Role</strong> — brought together analytics, growth and customer experience to make decisions easier week by week.</p>
 
-            <h4>Data & Business Intelligence</h4>
+            <h4>Problem</h4>
+            <p>Sales and marketing data for tobipets.com lived in disconnected systems, making it hard to see which segments were driving repeat purchases or where campaigns were leaking demand.</p>
+
+            <h4>Ownership</h4>
+            <p>Owned data, growth and CX end to end across two roles (Sales &amp; Data Supervisor, and Marketing Analyst, part-time) — brought analytics, campaigns and retention together to make decisions easier week by week.</p>
+
+            <h4>What I shipped</h4>
             <ul>
-              <li>Structured sales, cohort and retention data to understand repurchase and subscription behaviour.</li>
-              <li>Defined a simple KPI set (revenue, cohorts, repeat rate, AutoShip adoption, churn).</li>
-              <li>Highlighted where the funnel was leaking and which segments were most likely to repeat.</li>
+              <li>Unified 82,000+ CRM records across HubSpot and ClickHouse into real-time reporting, with a KPI set the team actually checked weekly.</li>
+              <li>Designed and executed marketing campaigns for acquisition and repeat purchases, including automation journeys (onboarding, replenishment reminders, win-back flows).</li>
+              <li>Contributed to the "Doggy Box" brand activation campaign with McDonald's, connecting offline events to online journeys.</li>
             </ul>
 
-            <h4>Growth & Marketing Campaigns</h4>
+            <h4>Impact</h4>
             <ul>
-              <li>Designed and executed marketing campaigns for acquisition and repeat purchases.</li>
-              <li>Supported automation journeys (onboarding, replenishment reminders, win-back flows).</li>
-              <li>Aligned messaging between campaigns, website and customer support so the journey felt coherent.</li>
-            </ul>
-
-            <h4>Brand Activation & Events</h4>
-            <ul>
-              <li>Collaborated on brand activation events in high-traffic locations to increase awareness and trust.</li>
-              <li>Connected offline events to digital journeys through specific offers and follow-up flows.</li>
-            </ul>
-
-            <h4>McDonald's Collaboration – Doggy Box</h4>
-            <ul>
-              <li>Contributed to the “Doggy Box” campaign with McDonald's, mixing physical experiences with online traffic and engagement.</li>
-              <li>Helped ensure the campaign translated into measurable demand, not just awareness.</li>
-            </ul>
-
-            <h4>Selected Milestones</h4>
-            <ul>
-              <li>Improved clarity on which segments were driving most of the recurring revenue.</li>
-              <li>Supported growth in repeat purchases and subscription adoption through clearer journeys.</li>
-              <li>Turned scattered data into simple, recurring views that the team could use every week.</li>
+              <li>82,000+ CRM records unified into a single real-time view.</li>
+              <li>11,400+ new leads and 350+ conversions from the McDonald's campaign alone.</li>
+              <li>Turned scattered data into simple, recurring views used weekly by sales and marketing.</li>
             </ul>
           </div>
         </div>
 
+      </div>
+
+      <div class="additional-label" data-stagger>Additional Experience</div>
+
+      <div class="exp-list">
         <!-- Alisto · B2B restaurants & suppliers -->
-        <div class="exp-item js-exp" data-stagger>
+        <div class="exp-item js-exp exp-item--secondary" data-stagger tabindex="0" role="button" aria-label="View Alisto case study">
           <div class="exp-main">
             <div>
-              <div class="exp-role">B2B sales & supplier acquisition</div>
-              <div class="exp-org">Alisto · Marketplace connecting restaurants & suppliers</div>
+              <div class="exp-role">Alisto — B2B Sales &amp; Supplier Growth</div>
+              <div class="exp-org">Marketplace connecting restaurants &amp; suppliers · Part-time</div>
             </div>
             <div class="exp-meta-hint">View case ↗</div>
           </div>
 
           <div class="exp-hidden" style="display:none;">
 
-            <p><strong>About Alisto</strong> — a B2B marketplace that connects restaurants with food & beverage suppliers, simplifying ordering for restaurants and giving suppliers a platform to manage their catalogue and reach new clients.</p>
+            <p class="exp-note">
+              Part-time, alongside my full-time role at Tobipets.
+            </p>
 
-            <p><strong>My role</strong> — I worked in the sales and supplier-side growth area, focusing on:</p>
+            <h4>Problem</h4>
+            <p>Restaurants were ordering from suppliers through scattered WhatsApp threads, with no easy way to compare prices or track spending — and suppliers had no structured way to reach new restaurant clients.</p>
+
+            <h4>Ownership</h4>
+            <p>Worked in the sales and supplier-side growth area, focusing on:</p>
             <ul>
               <li>Acquiring and onboarding new suppliers across key categories.</li>
               <li>Building and executing the supplier acquisition strategy.</li>
@@ -1571,38 +1966,17 @@
               <li>Aligning expectations between restaurants and suppliers to improve fulfilment and product availability.</li>
             </ul>
 
-            <h4>Impact for restaurants</h4>
+            <h4>What I shipped</h4>
             <ul>
               <li>Centralised, structured ordering with multiple suppliers instead of scattered WhatsApp messages.</li>
-              <li>Faster comparison of prices, presentations and availability.</li>
-              <li>Clear historical record of orders and spending.</li>
+              <li>A cleaner product catalogue with comparable presentations across suppliers.</li>
+              <li>Clearer operational standards with suppliers for faster order confirmation.</li>
             </ul>
 
-            <h4>Impact for suppliers</h4>
+            <h4>Impact</h4>
             <ul>
-              <li>New customer acquisition through marketplace visibility.</li>
-              <li>Simplified order management instead of improvised channels.</li>
-              <li>Better communication flow for stock changes, replacements and delivery coordination.</li>
-            </ul>
-
-            <h4>Data & operational improvements</h4>
-            <ul>
-              <li>Identified priority suppliers based on growth, fulfilment quality and order frequency.</li>
-              <li>Mapped operational bottlenecks where orders were getting delayed or lost.</li>
-              <li>Helped create a cleaner product catalogue with comparable presentations.</li>
-            </ul>
-
-            <h4>Customer & supplier experience</h4>
-            <ul>
-              <li>Clarified the end-to-end ordering flow for restaurant teams.</li>
-              <li>Set operational standards with suppliers for faster confirmation and fewer errors.</li>
-              <li>Improved communication loops between both sides of the marketplace.</li>
-            </ul>
-
-            <h4>Selected milestones</h4>
-            <ul>
-              <li>Successful onboarding of new suppliers into high-demand categories.</li>
-              <li>Higher order consistency from restaurants through better supplier coverage.</li>
+              <li>Faster comparison of prices, presentations and availability for restaurant buyers.</li>
+              <li>New customer acquisition for suppliers through marketplace visibility.</li>
               <li>Reduced friction by shifting suppliers from ad-hoc communication to platform-based order handling.</li>
             </ul>
 
@@ -1613,6 +1987,7 @@
                   class="exp-header-screenshot"
                   src="https://i.postimg.cc/wjPcDYsD/Image-26-11-25-at-11-58-AM.jpg"
                   alt="Alisto operational interface for restaurants and suppliers"
+                  loading="lazy"
                 >
                 <div class="exp-carousel-header-text">
                   Snapshot of Alisto — restaurants centralise orders, suppliers manage requests and discover new clients.
@@ -1622,63 +1997,309 @@
           </div>
         </div>
 
-        <!-- Vitta Health · Health-related digital project -->
-        <div class="exp-item js-exp" data-stagger>
-          <div class="exp-main">
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section id="how" class="reveal reveal-stagger section-block">
+    <div class="section-inner">
+      <h2 data-stagger>What I Bring to Product Teams</h2>
+      <p class="section-intro" data-stagger>
+        <span class="accent-text">Everything orbits around product</span> — tap to open each one.
+      </p>
+
+      <div class="focus-grid">
+        <div class="focus-item js-focus" data-stagger tabindex="0" role="button" aria-expanded="false">
+          <div class="focus-head">
             <div>
-              <div class="exp-role">Founder · Product, strategy, sales & partnerships</div>
-              <div class="exp-org">Vitta Health · AI-powered medical automation platform</div>
+              <div class="focus-label">01</div>
+              <div class="focus-title">Product discovery & strategy</div>
             </div>
-            <div class="exp-meta-hint">View case ↗</div>
+            <div class="focus-toggle">More ▾</div>
           </div>
-
-          <div class="exp-hidden" style="display:none;">
-
-            <p>
-              <strong>About Vitta Health</strong> — a healthtech platform that automates medical workflows using AI,
-              helping doctors reduce documentation time, improve patient communication and streamline clinical tasks.
-              I founded Vitta Health and led the product from idea to working platform.
-            </p>
-
+          <div class="focus-more">
+            <p>Turn customer and business problems into clear product priorities.</p>
             <ul>
-              <li>AI-generated medical notes, summaries and clinical documents.</li>
-              <li>Smart triage and automated patient education.</li>
-              <li>Omnichannel communication (WhatsApp, web app, calls).</li>
-              <li>Predictive tools to identify demand peaks in medical services.</li>
+              <li>Talk to users and stakeholders to find the real problem, not just the requested feature.</li>
+              <li>Translate that into a roadmap the team can actually execute.</li>
             </ul>
-
-            <h4>My role</h4>
-            <ul>
-              <li><strong>Founder & product lead:</strong> Defined the product vision, structure, technical architecture and feature roadmap.</li>
-              <li><strong>Strategy:</strong> Designed the go-to-market approach for doctors, clinics and health institutions.</li>
-              <li><strong>Sales:</strong> Led B2B sales, demos and onboarding for early clinical users and partners.</li>
-              <li><strong>Partnerships:</strong> Built and managed strategic relationships with health providers and organisations.</li>
-            </ul>
-
-            <h4>Key partnership</h4>
-            <p>
-              I led the partnership with <strong>Hospital Clínica Bíblica</strong>, the largest private hospital in Costa Rica,
-              to explore innovation initiatives around AI-assisted care and digital medical workflows.
-            </p>
-
-            <h4>Impact areas</h4>
-            <ul>
-              <li>Reduced documentation time for doctors by automating repetitive tasks.</li>
-              <li>Improved patient experience with faster communication and clearer instructions.</li>
-              <li>Helped clinics scale by standardising medical documentation quality.</li>
-              <li>Introduced automated flows that simplified scheduling, follow-ups and clinical communication.</li>
-            </ul>
-
-            <h4>Selected milestones</h4>
-            <ul>
-              <li>Founded the project and built the first working version of the platform.</li>
-              <li>Secured early B2B clients and clinical users.</li>
-              <li>Established a strategic partnership with a major health institution.</li>
-              <li>Designed a roadmap focused on multi-speciality workflows and offline-first capability.</li>
-            </ul>
-
           </div>
         </div>
+
+        <div class="focus-item js-focus" data-stagger tabindex="0" role="button" aria-expanded="false">
+          <div class="focus-head">
+            <div>
+              <div class="focus-label">02</div>
+              <div class="focus-title">AI product development</div>
+            </div>
+            <div class="focus-toggle">More ▾</div>
+          </div>
+          <div class="focus-more">
+            <p>Prototype and ship AI-enabled workflows myself.</p>
+            <ul>
+              <li>Production integrations with Claude and OpenAI APIs.</li>
+              <li>Backend architecture on Python/Flask and Xano.</li>
+            </ul>
+            <div class="tech-chip-row">
+              <span class="tech-chip">Python</span><span class="tech-chip">Flask</span>
+              <span class="tech-chip">Claude API</span><span class="tech-chip">OpenAI API</span><span class="tech-chip">Xano</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="focus-item js-focus" data-stagger tabindex="0" role="button" aria-expanded="false">
+          <div class="focus-head">
+            <div>
+              <div class="focus-label">03</div>
+              <div class="focus-title">Data-informed product decisions</div>
+            </div>
+            <div class="focus-toggle">More ▾</div>
+          </div>
+          <div class="focus-more">
+            <p>Use behavioural and commercial data to prioritise, not just to report.</p>
+            <ul>
+              <li>Define a small, clear metric set the team actually checks every week.</li>
+              <li>Connect data from the tools you already have instead of asking for new ones.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="focus-item js-focus" data-stagger tabindex="0" role="button" aria-expanded="false">
+          <div class="focus-head">
+            <div>
+              <div class="focus-label">04</div>
+              <div class="focus-title">Go-to-market & growth</div>
+            </div>
+            <div class="focus-toggle">More ▾</div>
+          </div>
+          <div class="focus-more">
+            <p>Connect product decisions to acquisition, adoption and revenue.</p>
+            <ul>
+              <li>Map the journey from first touch to repeat, and close the biggest leaks first.</li>
+              <li>Plan and run go-to-market, from B2B partnerships to lifecycle campaigns.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="reveal reveal-stagger section-block">
+    <div class="section-inner">
+      <h2 data-stagger>Experience</h2>
+      <p class="section-intro" data-stagger>
+        <span class="accent-text">The scan version</span> — see Selected Work above for the full story behind each one.
+      </p>
+
+      <div class="timeline" data-stagger>
+        <div class="timeline-item">
+          <div class="timeline-role">AI Product Lead <span class="timeline-org">· Clonocare</span></div>
+          <div><div class="timeline-date">Dec 2025 — Present</div><span class="timeline-type">Contract</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Founder & Product Lead <span class="timeline-org">· Vitta Health</span></div>
+          <div><div class="timeline-date">Jan 2023 — Present</div><span class="timeline-type">Founder-led venture</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Sales & Data Supervisor <span class="timeline-org">· tobipets.com</span></div>
+          <div><div class="timeline-date">Aug 2025 — Present</div><span class="timeline-type">Full-time</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Marketing Analyst <span class="timeline-org">· tobipets.com</span></div>
+          <div><div class="timeline-date">Jul 2024 — Aug 2025</div><span class="timeline-type">Part-time</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Key Account Manager <span class="timeline-org">· Listo</span></div>
+          <div><div class="timeline-date">Oct 2023 — Sep 2025</div><span class="timeline-type">Part-time</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Data & Analytics Lead <span class="timeline-org">· tobipets.com</span></div>
+          <div><div class="timeline-date">Feb 2023 — May 2023</div><span class="timeline-type">Full-time</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">Sales & Customer Success Lead <span class="timeline-org">· tobipets.com</span></div>
+          <div><div class="timeline-date">Apr 2022 — Feb 2023</div><span class="timeline-type">Full-time</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLKIT -->
+  <section id="toolkit" class="reveal reveal-stagger section-block">
+    <div class="section-inner">
+      <h2 data-stagger>Toolkit</h2>
+      <p class="section-intro" data-stagger>
+        <span class="accent-text">Tools I use to move from product decisions to execution.</span>
+      </p>
+
+      <div class="toolkit-grid" data-stagger>
+        <div class="toolkit-card">
+          <div class="toolkit-card-label">AI & LLM</div>
+          <div class="toolkit-chip-row">
+            <span class="toolkit-chip toolkit-chip--ai">Claude API</span>
+            <span class="toolkit-chip toolkit-chip--ai">OpenAI API</span>
+            <span class="toolkit-chip toolkit-chip--ai">GPT</span>
+            <span class="toolkit-chip toolkit-chip--ai">Whisper</span>
+            <span class="toolkit-chip toolkit-chip--ai">Prompt Engineering</span>
+          </div>
+        </div>
+
+        <div class="toolkit-card">
+          <div class="toolkit-card-label">Engineering</div>
+          <div class="toolkit-chip-row">
+            <span class="toolkit-chip">Python</span>
+            <span class="toolkit-chip">Flask</span>
+            <span class="toolkit-chip">PostgreSQL</span>
+            <span class="toolkit-chip">REST APIs</span>
+            <span class="toolkit-chip">Git / GitHub</span>
+          </div>
+        </div>
+
+        <div class="toolkit-card">
+          <div class="toolkit-card-label">Data & Analytics</div>
+          <div class="toolkit-chip-row">
+            <span class="toolkit-chip">SQL</span>
+            <span class="toolkit-chip">ClickHouse</span>
+          </div>
+        </div>
+
+        <div class="toolkit-card">
+          <div class="toolkit-card-label">Rapid Product Development</div>
+          <div class="toolkit-chip-row">
+            <span class="toolkit-chip">Bubble</span>
+            <span class="toolkit-chip">Xano</span>
+            <span class="toolkit-chip">XanoScript</span>
+            <span class="toolkit-chip">Google Apps Script</span>
+          </div>
+        </div>
+
+        <div class="toolkit-card">
+          <div class="toolkit-card-label">Growth & Commercial</div>
+          <div class="toolkit-chip-row">
+            <span class="toolkit-chip">HubSpot</span>
+            <span class="toolkit-chip">Zendesk</span>
+            <span class="toolkit-chip">WooCommerce</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOGNITION -->
+  <section id="recognition" class="reveal reveal-stagger section-block">
+    <div class="section-inner">
+      <h2 data-stagger>Recognition</h2>
+      <p class="section-intro" data-stagger>
+        <span class="accent-text">External validation</span> — organisations that backed the work along the way.
+      </p>
+
+      <div class="recognition-grid" data-stagger>
+        <div class="recognition-item">
+          <div class="recognition-org">Hospital Clínica Bíblica</div>
+          <div class="recognition-detail">Life Sciences Center — selected startup, innovation programme</div>
+        </div>
+        <div class="recognition-item">
+          <div class="recognition-org">DMNTS · Teletica</div>
+          <div class="recognition-detail">Finalist, national entrepreneurship TV show (Season 7)</div>
+        </div>
+        <div class="recognition-item">
+          <div class="recognition-org">Yo Emprendedor</div>
+          <div class="recognition-detail">"Actitud YE" award, Regional Business Competition</div>
+        </div>
+        <div class="recognition-item">
+          <div class="recognition-org">Get in the Ring Costa Rica</div>
+          <div class="recognition-detail">Entrepreneurship competition recognition</div>
+        </div>
+        <div class="recognition-item">
+          <div class="recognition-org">EmpreLatam</div>
+          <div class="recognition-detail">Startup Founder certification</div>
+        </div>
+        <div class="recognition-item">
+          <div class="recognition-org">AvantLab</div>
+          <div class="recognition-detail">Health-Tech Founder certification</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media" class="reveal reveal-stagger section-block">
+    <div class="section-inner">
+      <h2 data-stagger>Media & Stage</h2>
+      <p class="section-intro" data-stagger>
+        <span class="accent-text">Selected moments</span> from pitches, competitions and press coverage.
+      </p>
+
+      <div class="media-grid">
+
+        <!-- 1. DMNTS Finalist -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/P5FcddWj/IMG-2612.jpg"
+               alt="Monserrat Alvarez pitching at DMNTS reality show stage" loading="lazy">
+          <div class="media-body">
+            <div class="media-tag">Pitch · DMNTS</div>
+            <div class="media-title">Finalist of DMNTS Reality Show</div>
+            <div class="media-meta">National TV broadcast · Teletica</div>
+          </div>
+        </article>
+
+        <!-- 2. DMNTS Talk -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/LXSGbNkb/IMG-2121.jpg"
+               alt="Monserrat Alvarez speaking on DMNTS stage with microphone headset" loading="lazy">
+          <div class="media-body">
+            <div class="media-tag">Talk · DMNTS</div>
+            <div class="media-title">Sharing the Movy Health story</div>
+            <div class="media-meta">National audience · Teletica · early name for Vitta Health</div>
+          </div>
+        </article>
+
+        <!-- 3. Press – DMNTS selection -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/13YTyyGz/IMG-2057.jpg"
+               alt="News article announcing Movy Health as selected startup in DMNTS" loading="lazy">
+          <div class="media-body">
+            <div class="media-tag">Press</div>
+            <div class="media-title">Movy Health selected among top startups</div>
+            <div class="media-meta">Teletica · August 2024 · early name for Vitta Health</div>
+          </div>
+        </article>
+
+        <!-- 4. From school project to pet care brand -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/vZSjGGrD/IMG-4638.jpg"
+               alt="Monserrat Alvarez featured in El Financiero about Cat & Dog Company" loading="lazy">
+          <div class="media-body">
+            <div class="media-tag">Press</div>
+            <div class="media-title">From school project to pet care brand</div>
+            <div class="media-meta">El Financiero · Cat & Dog Company</div>
+          </div>
+        </article>
+
+        <!-- 5. Youth entrepreneurship feature -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/7ZQcqq3Z/IMG-4781.jpg"
+               alt="Pulso Empresarial youth entrepreneurship feature with Monserrat Alvarez" loading="lazy">
+          <div class="media-body">
+            <div class="media-tag">Media</div>
+            <div class="media-title">Youth entrepreneurship feature</div>
+            <div class="media-meta">Pulso Empresarial · Cat & Dog Company</div>
+          </div>
+        </article>
+
+        <!-- 6. Recognition at Get in the Ring -->
+        <article class="media-item" data-stagger>
+          <img src="https://i.postimg.cc/Cx6twwG1/IMG-7334.jpg"
+               alt="Monserrat Alvarez receiving Get in the Ring Costa Rica award" loading="lazy">
+          <div class="media-body">
+            <div class="media-tag">Award</div>
+            <div class="media-title">Recognition at Get in the Ring Costa Rica</div>
+            <div class="media-meta">Entrepreneurship competition</div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
@@ -1688,14 +2309,20 @@
     <div class="section-inner" style="text-align: center;">
       <h2>Contact</h2>
       <p class="section-intro" style="margin-left: auto; margin-right: auto;">
-        If you're hiring for a role in data, growth or CX and my profile feels relevant, you can reach me directly by email.
+        I'm exploring AI Product, Product Management and Product &amp; Growth opportunities in the UK, particularly with teams building ambitious technology products.
+      </p>
+      <p class="section-intro" style="margin-left: auto; margin-right: auto; margin-top: -6px;">
+        Based in Costa Rica · UK visa route in progress · Relocating to London in 2027 · Open to remote opportunities before relocation
       </p>
 
       <div class="contact-actions">
         <a
           class="btn-primary"
-          href="mailto:monsealva31221@gmail.com?subject=Role%20opportunity%20-%20Data%2C%20Growth%20or%20CX&body=Hi%20Monserrat%2C%0D%0A%0D%0AI'm%20reaching%20out%20about%20a%20role%20related%20to%20data%2C%20growth%20or%20customer%20experience.%0D%0A%0D%0ACompany%3A%0D%0ARole%3A%0D%0AWhat%20we%20need%20help%20with%3A%0D%0A%0D%0AThanks!">
-          Email me about a role<span>↗</span>
+          href="mailto:monsealva31221@gmail.com?subject=Role%20opportunity%20%E2%80%94%20Product%20%2F%20AI&body=Hi%20Monserrat%2C%0D%0A%0D%0AI'm%20reaching%20out%20about%20a%20role%20related%20to%20AI%20product%20or%20product%20management.%0D%0A%0D%0ACompany%3A%0D%0ARole%3A%0D%0AWhat%20we%20need%20help%20with%3A%0D%0A%0D%0AThanks!">
+          Discuss a role<span>↗</span>
+        </a>
+        <a class="btn-ghost" href="https://www.linkedin.com/in/monserrat-s-339b8b252/" target="_blank" rel="noopener">
+          View LinkedIn<span>↗</span>
         </a>
       </div>
 
@@ -1797,10 +2424,18 @@
 
   // Expand / collapse Focus cards
   document.querySelectorAll('.js-focus').forEach(card => {
-    card.addEventListener('click', () => {
+    function toggleFocusCard() {
       const expanded = card.classList.toggle('expanded');
       const toggle = card.querySelector('.focus-toggle');
       if (toggle) toggle.textContent = expanded ? 'Less ▴' : 'More ▾';
+      card.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }
+    card.addEventListener('click', toggleFocusCard);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFocusCard();
+      }
     });
   });
 
@@ -1892,6 +2527,12 @@
       e.preventDefault();
       openExpModal(item);
     });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openExpModal(item);
+      }
+    });
   });
 
   expModalCloseBtn.addEventListener('click', () => {
@@ -1952,6 +2593,10 @@
 
     let rect = element.getBoundingClientRect();
 
+    element.addEventListener('mouseenter', () => {
+      rect = element.getBoundingClientRect();
+    });
+
     element.addEventListener('mousemove', (event) => {
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
@@ -1981,16 +2626,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
